@@ -109,6 +109,39 @@ export default {
                 console.log('주소 결과: %c' + this.completeAddress, 'color:lime')
             }
         }
+    },
+
+    mounted() {
+        this.$nextTick(() => {
+            new window.daum.Postcode({
+                width: '100%',
+                height: '100%',
+                oncomplete: data => {
+                    let road = data.roadAddress
+
+                    let extraRoad = ''
+                    
+                    //  bname은 법정동 또는 법정리를 뜻하며
+                    //  bname이 존재하고, bname의 내용 끝에 동, 로 또는 가 가 있을 경우입니다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname))
+                        extraRoad = data.bname
+
+                    //  buldingName은 건물명, apartment는 공동주택 여부이다. (Y또는 N으로 반환)
+                    //  건물명이 존재하고 공동주택일 경우 주소지에 건물명을 추가합니다.
+                    if(data.buildingName !== '' && data.apartment === 'Y')
+                        extraRoad += ((extraRoad !== '') ? ', ' + data.buildingName : data.buildingName)
+
+                    if(extraRoad !== '')
+                        extraRoad = ' (' + extraRoad + ')'
+                    
+                    if(road !== '')
+                        road += extraRoad
+                    
+                    this.address = road
+                    this.zipcode = data.zonecode    //  우편번호를 반환합니다.
+                }
+            }).embed(this.$refs['address-embed'])
+        })
     }
 }
 </script>
