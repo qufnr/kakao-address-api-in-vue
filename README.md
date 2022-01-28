@@ -5,7 +5,11 @@
 ## 1. Javascript CDN 설정
 `public/index.html`에 다음 Script 호출 HTML 태그를 추가합니다.
 ```html
+<!-- HTTP 경우 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<!-- HTTPS 경우 -->
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 ```
 
 ## 2. Vue 인스턴스에서 daum.Postcode() 호출하기
