@@ -2,7 +2,7 @@
 
 > 해당 프로젝트는 Vue 2.x 버전에서 테스트를 진행하였습니다. 3.x 버전에서의 작동 여부는 확인하지 않았습니다.
 
-[Demo 데모](https://qufnr.github.io/kakao-address-api-in-vue/, "데모")
+[Demo 데모](https://qufnr.github.io/kakao-address-api-in-vue/ "데모")
 
 ## 1. Javascript CDN 설정
 `public/index.html`에 다음 Script 호출 HTML 태그를 추가합니다.
