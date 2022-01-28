@@ -1,3 +1,4 @@
 module.exports = {
-    publicPath: '/demo'
+    publicPath: '/kakao-address-api-in-vue',
+    outputDir: 'docs'
 }
